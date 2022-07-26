@@ -37,13 +37,14 @@ def calc_stats(vals_img, gmw_img):
 
     return val_stats_lut
 
-
 class PerformAnalysis(PBPTQProcessTool):
     def __init__(self):
         super().__init__(cmd_name="perform_analysis.py", descript=None)
 
     def do_processing(self, **kwargs):
         stats_lut = calc_stats(self.params["tile_img"], self.params["gmw_tile"])
+
+        stats_lut["avg"] = stats_lut['sum'] / stats_lut['count']
 
         rsgislib.tools.utils.write_dict_to_json(stats_lut, self.params["out_file"])
 
