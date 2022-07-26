@@ -76,7 +76,7 @@ class PerformAnalysis(PBPTQProcessTool):
             tile_stats_lut[val]['vals'] = 0.0
             tile_stats_lut[val]['vals_area'] = 0.0
 
-        calc_unq_val_pxl_areas(self.params["agb_tile"], self.params["pxl_area_img"], self.params["cntry_img"], self.params["gmw_ext_img"], tile_stats_lut)
+        calc_unq_val_pxl_areas(self.params["carbon_tile"], self.params["pxl_area_img"], self.params["cntry_img"], self.params["gmw_ext_img"], tile_stats_lut)
 
         for val in unq_vals:
             val = int(val)
@@ -89,7 +89,7 @@ class PerformAnalysis(PBPTQProcessTool):
 
 
     def required_fields(self, **kwargs):
-        return ["agb_tile", "country_ids_lut_file", "cntry_img", "pxl_area_img", "gmw_ext_img", "out_file"]
+        return ["carbon_tile", "country_ids_lut_file", "cntry_img", "pxl_area_img", "gmw_ext_img", "out_file"]
 
     def outputs_present(self, **kwargs):
         files_dict = dict()

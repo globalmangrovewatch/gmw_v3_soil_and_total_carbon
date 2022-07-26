@@ -16,8 +16,8 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             os.mkdir(kwargs['out_path'])
 
         agb_tiles = glob.glob(kwargs['carbon_tiles'])
-        for agb_tile in agb_tiles:
-            tile_base_name = rsgislib.tools.filetools.get_file_basename(agb_tile).replace("_total_soil_2018_2020", "")
+        for carbon_tile in carbon_tiles:
+            tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_total_soil_2018_2020", "")
             cntry_img = os.path.join(kwargs['cntry_uid_dir'], "{}_cnty.kea".format(tile_base_name))
             pxl_area_img = os.path.join(kwargs['pxl_area_dir'], "{}_pxl_area.kea".format(tile_base_name))
             gmw_ext_img = os.path.join(kwargs['gmw_ext_dir'], "{}_gmw_v314_mng_mjr_2020.kea".format(tile_base_name))
@@ -25,7 +25,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             out_file = os.path.join(kwargs['out_path'], "{}_gmw_v314_agb_stats.json".format(tile_base_name))
             if not os.path.exists(out_file):
                 c_dict = dict()
-                c_dict['agb_tile'] = agb_tile
+                c_dict['carbon_tile'] = carbon_tile
                 c_dict['country_ids_lut_file'] = kwargs['country_ids_lut_file']
                 c_dict['cntry_img'] = cntry_img
                 c_dict['pxl_area_img'] = pxl_area_img
