@@ -44,7 +44,10 @@ class PerformAnalysis(PBPTQProcessTool):
     def do_processing(self, **kwargs):
         stats_lut = calc_stats(self.params["tile_img"], self.params["gmw_tile"])
 
-        stats_lut["avg"] = stats_lut['sum'] / stats_lut['count']
+        if stats_lut['count'] > 0:
+            stats_lut["avg"] = stats_lut['sum'] / stats_lut['count']
+        else:
+            stats_lut["avg"] = 0.0
 
         rsgislib.tools.utils.write_dict_to_json(stats_lut, self.params["out_file"])
 

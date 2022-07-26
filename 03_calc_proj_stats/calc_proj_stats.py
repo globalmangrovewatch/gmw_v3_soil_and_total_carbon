@@ -4,7 +4,7 @@ import rsgislib.tools.utils
 gmw_tile_stats_0_30 = "/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm_stats"
 gmw_tile_stats_30_100 = "/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm_stats"
 
-gmw_proj_lut_file = "../00_base_info/gmw_projects_luts.json"
+gmw_proj_lut_file = "../00_base_info/gmw_srtm_projects_luts.json"
 gmw_proj_lut = rsgislib.tools.utils.read_json_to_dict(gmw_proj_lut_file)
 
 gmw_proj_stats = dict()
@@ -73,6 +73,8 @@ for gmw_proj in gmw_proj_lut:
     if top_lvl_30_100_stats[top_lvl_proj]["count"] > 0:
         top_lvl_30_100_stats[top_lvl_proj]["avg"] = top_lvl_30_100_stats[top_lvl_proj]["sum"] / top_lvl_30_100_stats[top_lvl_proj]["count"]
 
+top_lvl_stats = {"0_30": top_lvl_0_30_stats,
+                 "30_100": top_lvl_30_100_stats}
 
 rsgislib.tools.utils.write_dict_to_json(gmw_proj_stats, "gmw_v3_proj_stats.json")
-rsgislib.tools.utils.write_dict_to_json(top_lvl_30_100_stats, "gmw_v3_proj_top_lvl_stats.json")
+rsgislib.tools.utils.write_dict_to_json(top_lvl_stats, "gmw_v3_proj_top_lvl_stats.json")
