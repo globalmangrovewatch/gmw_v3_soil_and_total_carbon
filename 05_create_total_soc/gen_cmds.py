@@ -37,8 +37,8 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_low_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm/*.tif",
-            img_up_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm/",
+            img_low_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm_filled/*.tif",
+            img_up_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm_filled/",
             out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_total_soc",
         )
 
