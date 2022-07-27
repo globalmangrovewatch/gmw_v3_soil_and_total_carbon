@@ -33,8 +33,8 @@ for stats_tile_file in stats_tiles:
         tile_stats_lut[val]['area'] += stats_tile_lut[val]['area']
         tile_stats_lut[val]['vals'] += stats_tile_lut[val]['vals']
         tile_stats_lut[val]['vals_area'] += stats_tile_lut[val]['vals_area']
-        tile_hist_lut[val] = tile_hist_lut[val] + numpy.array(stats_tile_lut["hist"], dtype=numpy.uint32)
-        glb_hist_data = glb_hist_data + numpy.array(stats_tile_lut["hist"], dtype=numpy.uint32)
+        tile_hist_lut[val] = tile_hist_lut[val] + numpy.array(stats_tile_lut[val]["hist"], dtype=numpy.uint32)
+        glb_hist_data = glb_hist_data + numpy.array(stats_tile_lut[val]["hist"], dtype=numpy.uint32)
 
 
 
