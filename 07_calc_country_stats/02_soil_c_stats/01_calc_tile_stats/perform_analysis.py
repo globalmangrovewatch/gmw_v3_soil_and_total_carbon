@@ -51,12 +51,15 @@ def calc_unq_val_pxl_areas(vals_img, pix_area_img, uid_img, gmw_img, unq_val_are
         if unq_val != 0:
             msk = numpy.zeros_like(uid_arr, dtype=bool)
             msk[(uid_arr == unq_val) & (uid_arr > 0) & (gmw_arr == 1)] = True
+            if numpy.sum(msk) > 0:
+                unq_val_area_lut[unq_val]['count'] = numpy.sum(msk)
+                unq_val_area_lut[unq_val]['area'] = numpy.sum(pxl_area_arr[msk])
+                unq_val_area_lut[unq_val]['vals'] = numpy.sum(vals_arr[msk])
+                unq_val_area_lut[unq_val]['vals_area'] = numpy.sum(vals_arr[msk] * pxl_area_arr[msk])
 
-            unq_val_area_lut[unq_val]['count'] = numpy.sum(msk)
-            unq_val_area_lut[unq_val]['area'] = numpy.sum(pxl_area_arr[msk])
-            unq_val_area_lut[unq_val]['vals'] = numpy.sum(vals_arr[msk])
-            unq_val_area_lut[unq_val]['vals_area'] = numpy.sum(vals_arr[msk] * pxl_area_arr[msk])
-
+                vals_unq_val_arr = vals_arr[msk].flatten()
+                vals_hist, bin_edges = numpy.histogram(vals_unq_val_arr, bins=201, range=(0, 5025))
+                unq_val_area_lut[unq_val]['hist'] = unq_val_area_lut[unq_val]['hist'] + vals_hist
 
 class PerformAnalysis(PBPTQProcessTool):
     def __init__(self):
@@ -75,6 +78,7 @@ class PerformAnalysis(PBPTQProcessTool):
             tile_stats_lut[val]['area'] = 0.0
             tile_stats_lut[val]['vals'] = 0.0
             tile_stats_lut[val]['vals_area'] = 0.0
+            tile_stats_lut[val]['hist'] = numpy.zeros((201), dtype=numpy.uint32)
 
         calc_unq_val_pxl_areas(self.params["carbon_tile"], self.params["pxl_area_img"], self.params["cntry_img"], self.params["gmw_ext_img"], tile_stats_lut)
 
