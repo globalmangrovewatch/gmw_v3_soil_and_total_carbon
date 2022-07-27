@@ -59,9 +59,8 @@ rsgislib.tools.utils.write_dict_to_json(tile_stats_lut, 'country_total_soil_c_st
 df_stats = pandas.DataFrame.from_dict(out_data)
 df_stats.to_feather("country_total_soil_c_stats.feather")
 df_stats.to_csv("country_total_soil_c_stats.csv")
-excel_sheet = 'tot_soil_c'
 xls_writer = pandas.ExcelWriter("country_total_soil_c_stats.xlsx", engine='xlsxwriter')
-df_stats.to_excel(xls_writer, sheet_name=excel_sheet)
+df_stats.to_excel(xls_writer, sheet_name='tot_soil_c')
 xls_writer.save()
 
 rsgislib.tools.utils.write_dict_to_json(tile_hist_lut, "country_total_soil_c_hists.json")
