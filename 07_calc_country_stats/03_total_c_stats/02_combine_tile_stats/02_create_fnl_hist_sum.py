@@ -39,8 +39,8 @@ for cntry_id in country_ids_lut["val"].keys():
 
 
 df_stats = pandas.DataFrame.from_dict(out_data)
-df_stats.to_csv("country_total_soil_c_hists_summary.csv")
-df_stats.to_feather("country_total_soil_c_hists_summary.feather")
-xlsx_writer = pandas.ExcelWriter("country_total_soil_c_hists_summary.xlsx", engine='xlsxwriter')
-df_stats.to_excel(xlsx_writer, sheet_name='soil_c_hist')
+df_stats.to_csv("country_total_c_hists_summary.csv")
+df_stats.to_feather("country_total_c_hists_summary.feather")
+xlsx_writer = pandas.ExcelWriter("country_total_c_hists_summary.xlsx", engine='xlsxwriter')
+df_stats.to_excel(xlsx_writer, sheet_name='tot_c_hist')
 xlsx_writer.save()
