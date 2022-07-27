@@ -4,7 +4,12 @@ import pandas
 import numpy
 
 country_ids_lut_file='../../country_ids_lut.json'
-unq_cntry_vals = rsgislib.tools.utils.read_json_to_dict(country_ids_lut_file)["val"].keys()
+country_ids_lut = rsgislib.tools.utils.read_json_to_dict(country_ids_lut_file)
+unq_cntry_vals = country_ids_lut["val"].keys()
+
+gadm_lut_file ='../../gadm_lut.json'
+gadm_lut = rsgislib.tools.utils.read_json_to_dict(gadm_lut_file)
+
 
 glb_hist_data = numpy.zeros((201), dtype=numpy.uint32)
 
@@ -31,12 +36,27 @@ for stats_tile_file in stats_tiles:
         tile_hist_lut[val] = tile_hist_lut[val] + numpy.array(stats_tile_lut["hist"], dtype=numpy.uint32)
         glb_hist_data = glb_hist_data + numpy.array(stats_tile_lut["hist"], dtype=numpy.uint32)
 
+
+
+
+out_data = dict()
+out_data['Country'] = list()
+out_data['Country_Code'] = list()
+out_data['c_total'] = list()
+out_data['c_avg'] = list()
+
 for val in unq_cntry_vals:
-    tile_stats_lut[val]['avg'] = tile_stats_lut[val]['vals']/tile_stats_lut[val]['count']
+    if tile_stats_lut[val]['count'] > 0:
+        cntry_code = country_ids_lut['val'][val]
+        out_data['Country'].append(gadm_lut['gid'][cntry_code])
+        out_data['Country_Code'].append(cntry_code)
+        out_data['c_total'].append(tile_stats_lut[val]['vals_area'])
+        out_data['c_avg'].append(tile_stats_lut[val]['vals']/tile_stats_lut[val]['count'])
+
 
 rsgislib.tools.utils.write_dict_to_json(tile_stats_lut, 'country_total_soil_c_stats.json')
 
-df_stats = pandas.DataFrame.from_dict(tile_stats_lut)
+df_stats = pandas.DataFrame.from_dict(out_data)
 df_stats.to_feather("country_total_soil_c_stats.feather")
 df_stats.to_csv("country_total_soil_c_stats.csv")
 excel_sheet = 'tot_soil_c'
