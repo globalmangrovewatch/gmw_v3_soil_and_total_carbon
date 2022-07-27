@@ -15,7 +15,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         if not os.path.exists(kwargs['out_path']):
             os.mkdir(kwargs['out_path'])
 
-        agb_tiles = glob.glob(kwargs['carbon_tiles'])
+        carbon_tiles = glob.glob(kwargs['carbon_tiles'])
         for carbon_tile in carbon_tiles:
             tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_total_soil_2018_2020", "")
             cntry_img = os.path.join(kwargs['cntry_uid_dir'], "{}_cnty.kea".format(tile_base_name))
