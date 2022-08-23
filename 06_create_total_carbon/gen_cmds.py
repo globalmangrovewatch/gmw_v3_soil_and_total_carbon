@@ -26,8 +26,8 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
             agb_img = os.path.join(kwargs["agb_dir"], f"{tile_name}_agb_gmw_v314_mng_mjr_2020.tif")
             gmw_img = os.path.join(kwargs["gmw_ext_dir"], f"{tile_name}_gmw_v314_mng_mjr_2020.kea")
-            out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_2018_2020.tif")
-            out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_2018_2020.tif")
+            out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_gmw_2020.tif")
+            out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_gmw_2020.tif")
 
             if not os.path.exists(agb_img):
                 raise Exception("AGB tile not available: {}".format(agb_img))
@@ -47,11 +47,11 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_total_soc/*.tif",
+            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_filled/*.tif",
             agb_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif",
             gmw_ext_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020",
-            out_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/total_carbon_tiles/2018_2020_total_c",
-            out_co2_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/total_carbon_tiles/2018_2020_total_co2",
+            out_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_c",
+            out_co2_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_co2",
         )
 
         self.pop_params_db()
