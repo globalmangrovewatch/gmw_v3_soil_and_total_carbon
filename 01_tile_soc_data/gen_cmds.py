@@ -32,17 +32,11 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
         self.gen_command_info(
             ref_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif/*.tif",
-            soil_c_img="/home/pete/Documents/gmw_v3_soil_total_carbon/data/base_soil_data/sol_soc.tha_mangroves.typology_m_30m_s30..100cm_2018..2020_global_v0.1.tif",
-            out_img_name="_soil_30_100cm_2018_2020",
-            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm",
+            soil_c_img="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/mangroves_SOC30m_0_100cm.vrt",
+            out_img_name="_soc_0_100cm",
+            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles",
         )
 
-        self.gen_command_info(
-            ref_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif/*.tif",
-            soil_c_img="/home/pete/Documents/gmw_v3_soil_total_carbon/data/base_soil_data/sol_soc.tha_mangroves.typology_m_30m_s0..30cm_2018..2020_global_v0.1.tif",
-            out_img_name="_soil_0_30cm_2018_2020",
-            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm",
-        )
 
 
         self.pop_params_db()
