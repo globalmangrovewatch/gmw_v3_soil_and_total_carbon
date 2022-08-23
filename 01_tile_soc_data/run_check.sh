@@ -1,4 +1,1 @@
-rsgischkgdalfile.py -i "/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm/*.kea" --nbands 1 --epsg 4326 --chkproj --readimg --chksum --rmerr
-
-rsgischkgdalfile.py -i "/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm/*.kea" --nbands 1 --epsg 4326 --chkproj --readimg --chksum --rmerr
-
+rsgischkgdalfile.py -i "/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles/*.tif" --nbands 1 --epsg 4326 --chkproj --readimg --chksum --rmerr

@@ -35,15 +35,9 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm/*.tif",
+            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles/*.tif",
             gmw_ext="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/gmw_union_srtm_rasters",
-            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_30cm_100cm_stats",
-        )
-
-        self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm/*.tif",
-            gmw_ext="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/gmw_union_srtm_rasters",
-            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_0cm_30cm_stats",
+            out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_stats",
         )
 
         self.pop_params_db()
