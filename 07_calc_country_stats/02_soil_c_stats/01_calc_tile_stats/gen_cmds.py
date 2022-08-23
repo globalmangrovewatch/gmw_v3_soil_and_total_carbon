@@ -17,7 +17,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
         carbon_tiles = glob.glob(kwargs['carbon_tiles'])
         for carbon_tile in carbon_tiles:
-            tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_total_soil_2018_2020", "")
+            tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_soc_0_100cm", "")
             cntry_img = os.path.join(kwargs['cntry_uid_dir'], "{}_cnty.kea".format(tile_base_name))
             pxl_area_img = os.path.join(kwargs['pxl_area_dir'], "{}_pxl_area.kea".format(tile_base_name))
             gmw_ext_img = os.path.join(kwargs['gmw_ext_dir'], "{}_gmw_v314_mng_mjr_2020.kea".format(tile_base_name))
@@ -35,12 +35,12 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
 
-        self.gen_command_info(carbon_tiles='/home/pete/Documents/gmw_v3_soil_total_carbon/data/soil_carbon_tiles/2018_2020_total_soc/*.tif',
+        self.gen_command_info(carbon_tiles='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles/*.tif',
                               cntry_uid_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/countries/srtm_country_extents',
                               country_ids_lut_file='../../country_ids_lut.json',
                               pxl_area_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/srtm_pxl_areas',
                               gmw_ext_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020',
-                              out_path='/home/pete/Documents/gmw_v3_soil_total_carbon/data/out_stats/total_soil_c/tile_stats')
+                              out_path='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/out_stats/total_soil_c/tile_stats')
 
         self.pop_params_db()
         self.create_shell_exe(
