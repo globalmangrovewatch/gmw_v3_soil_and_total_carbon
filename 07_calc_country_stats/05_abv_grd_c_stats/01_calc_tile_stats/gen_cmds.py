@@ -17,7 +17,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
         carbon_tiles = glob.glob(kwargs['carbon_tiles'])
         for carbon_tile in carbon_tiles:
-            tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_total_co2_gmw_2020", "")
+            tile_base_name = rsgislib.tools.filetools.get_file_basename(carbon_tile).replace("_ag_c_gmw_2020", "")
             cntry_img = os.path.join(kwargs['cntry_uid_dir'], "{}_cnty.kea".format(tile_base_name))
             pxl_area_img = os.path.join(kwargs['pxl_area_dir'], "{}_pxl_area.kea".format(tile_base_name))
             gmw_ext_img = os.path.join(kwargs['gmw_ext_dir'], "{}_gmw_v314_mng_mjr_2020.kea".format(tile_base_name))
