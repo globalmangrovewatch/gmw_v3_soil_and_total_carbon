@@ -22,7 +22,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             pxl_area_img = os.path.join(kwargs['pxl_area_dir'], "{}_pxl_area.kea".format(tile_base_name))
             gmw_ext_img = os.path.join(kwargs['gmw_ext_dir'], "{}_gmw_v314_mng_mjr_2020.kea".format(tile_base_name))
 
-            out_file = os.path.join(kwargs['out_path'], "{}_total_co2_stats.json".format(tile_base_name))
+            out_file = os.path.join(kwargs['out_path'], "{}_ag_c_stats.json".format(tile_base_name))
             if not os.path.exists(out_file):
                 c_dict = dict()
                 c_dict['carbon_tile'] = carbon_tile
