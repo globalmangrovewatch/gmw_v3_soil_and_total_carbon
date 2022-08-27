@@ -26,6 +26,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
             agb_img = os.path.join(kwargs["agb_dir"], f"{tile_name}_agb_gmw_v314_mng_mjr_2020.tif")
             gmw_img = os.path.join(kwargs["gmw_ext_dir"], f"{tile_name}_gmw_v314_mng_mjr_2020.kea")
+            out_agc_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_ag_c_gmw_2020.tif")
             out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_gmw_2020.tif")
             out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_gmw_2020.tif")
 
@@ -35,11 +36,12 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             if not os.path.exists(gmw_img):
                 raise Exception("gmw tile not available: {}".format(gmw_img))
 
-            if not os.path.exists(out_c_img) or not os.path.exists(out_co2_img):
+            if not os.path.exists(out_agc_img) or not os.path.exists(out_c_img) or not os.path.exists(out_co2_img):
                 c_dict = dict()
                 c_dict["soc_img"] = img
                 c_dict["agb_img"] = agb_img
                 c_dict["gmw_img"] = gmw_img
+                c_dict["out_agc_img"] = out_agc_img
                 c_dict["out_c_img"] = out_c_img
                 c_dict["out_co2_img"] = out_co2_img
                 self.params.append(c_dict)
@@ -50,6 +52,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_filled/*.tif",
             agb_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif",
             gmw_ext_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020",
+            out_ag_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_ag_c",
             out_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_c",
             out_co2_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_co2",
         )

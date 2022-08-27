@@ -17,6 +17,9 @@ for gmw_proj in gmw_proj_lut:
         top_lvl_0_100_stats[top_lvl_proj]["sum"] = 0
         top_lvl_0_100_stats[top_lvl_proj]["count"] = 0
 
+overall_0_100_stats = dict()
+overall_0_100_stats["sum"] = 0
+overall_0_100_stats["count"] = 0
 for gmw_proj in gmw_proj_lut:
     top_lvl_proj = gmw_proj.split("-")[1]
 
@@ -32,6 +35,8 @@ for gmw_proj in gmw_proj_lut:
             proj_0_100_stats["count"] += gmw_tile_stats_0_100_stats["count"]
             top_lvl_0_100_stats[top_lvl_proj]["sum"] += gmw_tile_stats_0_100_stats["sum"]
             top_lvl_0_100_stats[top_lvl_proj]["count"] += gmw_tile_stats_0_100_stats["count"]
+            overall_0_100_stats["sum"] += gmw_tile_stats_0_100_stats["sum"]
+            overall_0_100_stats["count"] += gmw_tile_stats_0_100_stats["count"]
 
     if proj_0_100_stats["sum"] > 0:
         proj_0_100_stats["avg"] = proj_0_100_stats["sum"] / proj_0_100_stats["count"]
@@ -47,8 +52,12 @@ for gmw_proj in gmw_proj_lut:
     if top_lvl_0_100_stats[top_lvl_proj]["count"] > 0:
         top_lvl_0_100_stats[top_lvl_proj]["avg"] = top_lvl_0_100_stats[top_lvl_proj]["sum"] /top_lvl_0_100_stats[top_lvl_proj]["count"]
 
+overall_0_100_stats["avg"] = overall_0_100_stats["sum"] /overall_0_100_stats["count"]
+
 
 top_lvl_stats = {"0_100": top_lvl_0_100_stats}
+overall_lvl_stats = {"0_100": overall_0_100_stats}
 
 rsgislib.tools.utils.write_dict_to_json(gmw_proj_stats, "gmw_v3_proj_stats.json")
 rsgislib.tools.utils.write_dict_to_json(top_lvl_stats, "gmw_v3_proj_top_lvl_stats.json")
+rsgislib.tools.utils.write_dict_to_json(overall_lvl_stats, "gmw_v3_overall_stats.json")

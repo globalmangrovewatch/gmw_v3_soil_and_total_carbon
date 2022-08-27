@@ -19,6 +19,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         gmw_proj_tile_lut = rsgislib.tools.utils.read_json_to_dict(kwargs["gmw_prj_lut"])
         gmw_proj_stats_lut = rsgislib.tools.utils.read_json_to_dict(kwargs["gmw_prj_stats"])
         gmw_proj_tp_lvl_stats_lut = rsgislib.tools.utils.read_json_to_dict(kwargs["gmw_prj_tp_lvl_stats"])
+        gmw_overall_lut = rsgislib.tools.utils.read_json_to_dict(kwargs["gmw_overall_stats"])
 
         imgs = glob.glob(kwargs["img_tiles"])
         for img in tqdm.tqdm(imgs):
@@ -36,6 +37,8 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
                 if not (tile_avg > 0.0):
                     top_lvl_proj = tile_prj.split("-")[1]
                     tile_avg = float(gmw_proj_tp_lvl_stats_lut[kwargs["stats_key"]][top_lvl_proj]["avg"])
+                if not (tile_avg > 0.0):
+                    tile_avg = float(gmw_overall_lut[kwargs["stats_key"]]["avg"])
 
                 c_dict = dict()
                 c_dict["soc_img"] = img
@@ -52,6 +55,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             gmw_prj_lut="../00_base_info/gmw_srtm_tiles_luts.json",
             gmw_prj_stats="../03_calc_proj_stats/gmw_v3_proj_stats.json",
             gmw_prj_tp_lvl_stats="../03_calc_proj_stats/gmw_v3_proj_top_lvl_stats.json",
+            gmw_overall_stats="../03_calc_proj_stats/gmw_v3_overall_stats.json",
             stats_key="0_100",
             out_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_filled",
         )
