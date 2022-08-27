@@ -13,6 +13,9 @@ logger = logging.getLogger(__name__)
 class GenTaskCmds(PBPTGenQProcessToolCmds):
 
     def gen_command_info(self, **kwargs):
+        if not os.path.exists(kwargs["out_ag_c_path"]):
+            os.mkdir(kwargs["out_ag_c_path"])
+
         if not os.path.exists(kwargs["out_c_path"]):
             os.mkdir(kwargs["out_c_path"])
 
@@ -26,7 +29,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
             agb_img = os.path.join(kwargs["agb_dir"], f"{tile_name}_agb_gmw_v314_mng_mjr_2020.tif")
             gmw_img = os.path.join(kwargs["gmw_ext_dir"], f"{tile_name}_gmw_v314_mng_mjr_2020.kea")
-            out_agc_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_ag_c_gmw_2020.tif")
+            out_agc_img = os.path.join(kwargs["out_ag_c_path"], f"{tile_name}_ag_c_gmw_2020.tif")
             out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_gmw_2020.tif")
             out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_gmw_2020.tif")
 
