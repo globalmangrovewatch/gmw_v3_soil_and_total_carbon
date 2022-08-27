@@ -8,7 +8,7 @@ country_ids_lut = rsgislib.tools.utils.read_json_to_dict(country_ids_lut_file)
 gadm_lut_file ='../../gadm_lut.json'
 gadm_lut = rsgislib.tools.utils.read_json_to_dict(gadm_lut_file)
 
-country_agb_stats_file = 'country_total_co2_hists.json'
+country_agb_stats_file = 'country_abv_grd_c_hists.json'
 country_agb_stats_lut = rsgislib.tools.utils.read_json_to_dict(country_agb_stats_file)
 
 
