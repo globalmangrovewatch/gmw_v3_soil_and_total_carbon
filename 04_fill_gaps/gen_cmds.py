@@ -36,9 +36,12 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
                 tile_avg = float(gmw_proj_stats_lut[tile_prj][kwargs["stats_key"]]["avg"])
                 if not (tile_avg > 0.0):
                     top_lvl_proj = tile_prj.split("-")[1]
+                    print(top_lvl_proj)
                     tile_avg = float(gmw_proj_tp_lvl_stats_lut[kwargs["stats_key"]][top_lvl_proj]["avg"])
+                    print(tile_avg)
                 if not (tile_avg > 0.0):
                     tile_avg = float(gmw_overall_lut[kwargs["stats_key"]]["avg"])
+                    print("OVERALL: {}".format(tile_avg))
 
                 c_dict = dict()
                 c_dict["soc_img"] = img
