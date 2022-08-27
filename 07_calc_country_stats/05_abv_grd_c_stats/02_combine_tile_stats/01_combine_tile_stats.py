@@ -23,7 +23,7 @@ for val in unq_cntry_vals:
     tile_stats_lut[val]['vals_area'] = 0.0
     tile_hist_lut[val] = numpy.zeros((201), dtype=numpy.uint32)
 
-stats_tiles = glob.glob('/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/out_stats/total_co2/tile_stats/*.json')
+stats_tiles = glob.glob('/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/out_stats/gmw_2020_ag_c/tile_stats/*.json')
 
 for stats_tile_file in stats_tiles:
     stats_tile_lut = rsgislib.tools.utils.read_json_to_dict(stats_tile_file)
@@ -54,16 +54,16 @@ for val in unq_cntry_vals:
         out_data['c_avg'].append(tile_stats_lut[val]['vals']/tile_stats_lut[val]['count'])
 
 
-rsgislib.tools.utils.write_dict_to_json(tile_stats_lut, 'country_total_co2_stats.json')
+rsgislib.tools.utils.write_dict_to_json(tile_stats_lut, 'country_abv_grd_c_stats.json')
 
 df_stats = pandas.DataFrame.from_dict(out_data)
-df_stats.to_feather("country_total_co2_stats.feather")
-df_stats.to_csv("country_total_co2_stats.csv")
-xls_writer = pandas.ExcelWriter("country_total_co2_stats.xlsx", engine='xlsxwriter')
-df_stats.to_excel(xls_writer, sheet_name='tot_co2')
+df_stats.to_feather("country_abv_grd_c_stats.feather")
+df_stats.to_csv("country_abv_grd_c_stats.csv")
+xls_writer = pandas.ExcelWriter("country_abv_grd_c_stats.xlsx", engine='xlsxwriter')
+df_stats.to_excel(xls_writer, sheet_name='abv_grd_c')
 xls_writer.save()
 
-rsgislib.tools.utils.write_dict_to_json(tile_hist_lut, "country_total_co2_hists.json")
+rsgislib.tools.utils.write_dict_to_json(tile_hist_lut, "country_abv_grd_c_hists.json")
 
 hist_bins = numpy.arange(0, 5025, 25)
 glb_hist_data_dict = dict()
@@ -71,6 +71,6 @@ for i in range(201):
     glb_hist_data_dict[f"{hist_bins[i]}"] = [glb_hist_data[i]]
 
 df_hist_stats = pandas.DataFrame.from_dict(glb_hist_data_dict)
-xlsx_writer = pandas.ExcelWriter("glb_total_co2_hist.xlsx", engine='xlsxwriter')
-df_hist_stats.to_excel(xlsx_writer, sheet_name='tot_co2_hist')
+xlsx_writer = pandas.ExcelWriter("glb_abv_grd_c_hist.xlsx", engine='xlsxwriter')
+df_hist_stats.to_excel(xlsx_writer, sheet_name='abv_grd_c_hist')
 xlsx_writer.save()
