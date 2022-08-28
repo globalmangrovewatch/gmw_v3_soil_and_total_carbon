@@ -37,7 +37,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
         self.gen_command_info(carbon_tiles='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_co2/*.tif',
                               cntry_uid_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/countries/srtm_country_extents',
-                              country_ids_lut_file='../../country_ids_lut.json',
+                              country_ids_lut_file='../../../07_calc_country_stats/country_ids_lut.json',
                               pxl_area_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/srtm_pxl_areas',
                               gmw_ext_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/gmw_core_srtm_rasters',
                               out_path='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/out_stats/total_co2/tile_stats_core')
