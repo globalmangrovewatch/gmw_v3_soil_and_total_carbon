@@ -18,7 +18,7 @@ class GenCmds(PBPTGenQProcessToolCmds):
         for img in imgs:
             tile_base_name = rsgislib.tools.filetools.get_file_basename(img).replace(kwargs['base_rm'], "")
             gmw_ext_img = os.path.join(kwargs['gmw_ext_dir'], f"{tile_base_name}_gmw_v314_mng_mjr_2020.kea")
-            out_img = os.path.join(kwargs['gmw_ext_dir'], f"{tile_base_name}{kwargs['out_name']}.kea")
+            out_img = os.path.join(kwargs['out_dir'], f"{tile_base_name}{kwargs['out_name']}.kea")
             if not os.path.exists(out_img):
                 c_dict = dict()
                 c_dict["img"] = img
