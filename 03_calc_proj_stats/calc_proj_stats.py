@@ -1,7 +1,7 @@
 import os
 import rsgislib.tools.utils
 
-gmw_tile_stats_0_100 = "/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_stats"
+gmw_tile_stats_0_100 = "/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles_stats"
 
 gmw_proj_lut_file = "../00_base_info/gmw_srtm_projects_luts.json"
 gmw_proj_lut = rsgislib.tools.utils.read_json_to_dict(gmw_proj_lut_file)
