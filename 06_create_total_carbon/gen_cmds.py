@@ -52,12 +52,12 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_filled/*.tif",
+            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles_filled/*.tif",
             agb_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif",
             gmw_ext_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020",
-            out_ag_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_ag_c",
-            out_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_c",
-            out_co2_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/total_carbon_tiles/gmw_2020_total_co2",
+            out_ag_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/total_carbon_tiles/gmw_2020_ag_c",
+            out_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/total_carbon_tiles/gmw_2020_total_c",
+            out_co2_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/total_carbon_tiles/gmw_2020_total_co2",
         )
 
         self.pop_params_db()
