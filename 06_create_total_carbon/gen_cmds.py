@@ -29,9 +29,9 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
             agb_img = os.path.join(kwargs["agb_dir"], f"{tile_name}_agb_gmw_v314_mng_mjr_2020.tif")
             gmw_img = os.path.join(kwargs["gmw_ext_dir"], f"{tile_name}_gmw_v314_mng_mjr_2020.kea")
-            out_agc_img = os.path.join(kwargs["out_ag_c_path"], f"{tile_name}_ag_c_gmw_2020.tif")
-            out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_gmw_2020.tif")
-            out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_gmw_2020.tif")
+            out_agc_img = os.path.join(kwargs["out_ag_c_path"], f"{tile_name}_ag_c_gmw_2020.kea")
+            out_c_img = os.path.join(kwargs["out_c_path"], f"{tile_name}_total_c_gmw_2020.kea")
+            out_co2_img = os.path.join(kwargs["out_co2_path"], f"{tile_name}_total_co2_gmw_2020.kea")
 
             if not os.path.exists(agb_img):
                 raise Exception("AGB tile not available: {}".format(agb_img))
@@ -52,7 +52,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles_filled/*.tif",
+            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles_filled/*.kea",
             agb_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/agb_mng_mjr_2020_tif",
             gmw_ext_dir="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020",
             out_ag_c_path="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/total_carbon_tiles/gmw_2020_ag_c",
@@ -64,7 +64,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         self.create_shell_exe(
             run_script="run_exe_analysis.sh",
             cmds_sh_file="cmds_lst.sh",
-            n_cores=50,
+            n_cores=25,
             db_info_file="pbpt_db_conn_info.json",
         )
 
