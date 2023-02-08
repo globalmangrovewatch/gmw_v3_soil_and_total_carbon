@@ -20,7 +20,7 @@ class PerformAnalysis(PBPTQProcessTool):
         exp = "gmw==1?soc>0?soc:{}:0".format(self.params["fill_val"])
         print(exp)
 
-        rsgislib.imagecalc.band_math(self.params["out_img"], exp, 'GTIFF', rsgislib.TYPE_16UINT, band_defns)
+        rsgislib.imagecalc.band_math(self.params["out_img"], exp, 'KEA', rsgislib.TYPE_16UINT, band_defns)
         rsgislib.imageutils.pop_img_stats(self.params["out_img"], use_no_data=True, no_data_val=0, calc_pyramids=True)
 
     def required_fields(self, **kwargs):
