@@ -2,6 +2,7 @@ import glob
 import rsgislib.tools.utils
 import pandas
 import numpy
+import tqdm
 
 country_ids_lut_file='../../country_ids_lut.json'
 country_ids_lut = rsgislib.tools.utils.read_json_to_dict(country_ids_lut_file)
@@ -25,7 +26,7 @@ for val in unq_cntry_vals:
 
 stats_tiles = glob.glob('/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/out_stats/total_soil_c/tile_stats/*.json')
 
-for stats_tile_file in stats_tiles:
+for stats_tile_file in tqdm.tqdm(stats_tiles):
     stats_tile_lut = rsgislib.tools.utils.read_json_to_dict(stats_tile_file)
     
     for val in unq_cntry_vals:
@@ -61,7 +62,7 @@ df_stats.to_feather("country_total_soil_c_stats.feather")
 df_stats.to_csv("country_total_soil_c_stats.csv")
 xls_writer = pandas.ExcelWriter("country_total_soil_c_stats.xlsx", engine='xlsxwriter')
 df_stats.to_excel(xls_writer, sheet_name='tot_soil_c')
-xls_writer.save()
+xls_writer.close()
 
 rsgislib.tools.utils.write_dict_to_json(tile_hist_lut, "country_total_soil_c_hists.json")
 
@@ -73,4 +74,4 @@ for i in range(201):
 df_hist_stats = pandas.DataFrame.from_dict(glb_hist_data_dict)
 xlsx_writer = pandas.ExcelWriter("glb_total_soil_c_hist.xlsx", engine='xlsxwriter')
 df_hist_stats.to_excel(xlsx_writer, sheet_name='tot_soil_c_hist')
-xlsx_writer.save()
+xlsx_writer.close()
