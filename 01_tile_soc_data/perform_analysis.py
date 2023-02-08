@@ -13,8 +13,19 @@ class PerformAnalysis(PBPTQProcessTool):
 
     def do_processing(self, **kwargs):
         rsgislib.imageutils.set_env_vars_lzw_gtiff_outs()
-        rsgislib.imageutils.resample_img_to_match(self.params["tile_img"], self.params["vals_img"], self.params["out_img"], gdalformat="GTIFF", interp_method=rsgislib.INTERP_CUBIC, datatype=rsgislib.TYPE_16UINT, no_data_val = 0, multicore = False)
-        rsgislib.imageutils.pop_img_stats(self.params["out_img"], use_no_data=True, no_data_val=0, calc_pyramids=True)
+        rsgislib.imageutils.resample_img_to_match(
+            self.params["tile_img"],
+            self.params["vals_img"],
+            self.params["out_img"],
+            gdalformat="GTIFF",
+            interp_method=rsgislib.INTERP_CUBIC,
+            datatype=rsgislib.TYPE_16UINT,
+            no_data_val=-32768,
+            multicore=False,
+        )
+        rsgislib.imageutils.pop_img_stats(
+            self.params["out_img"], use_no_data=True, no_data_val=-32768, calc_pyramids=True
+        )
 
     def required_fields(self, **kwargs):
         return ["tile_img", "vals_img", "out_img"]
