@@ -17,7 +17,7 @@ class PerformAnalysis(PBPTQProcessTool):
             self.params["tile_img"],
             self.params["vals_img"],
             self.params["out_img"],
-            gdalformat="GTIFF",
+            gdalformat="KEA",
             interp_method=rsgislib.INTERP_CUBIC,
             datatype=rsgislib.TYPE_16UINT,
             no_data_val=-32768,

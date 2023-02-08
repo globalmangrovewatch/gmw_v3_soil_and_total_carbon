@@ -19,7 +19,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
             basename = rsgislib.tools.filetools.get_file_basename(img)
             tile_name = basename.split("_")[0]
             out_img = os.path.join(
-                kwargs["out_path"], f"{tile_name}{kwargs['out_img_name']}.tif"
+                kwargs["out_path"], f"{tile_name}{kwargs['out_img_name']}.kea"
             )
 
             if not os.path.exists(out_img):
