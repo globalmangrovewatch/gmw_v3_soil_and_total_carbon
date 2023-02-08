@@ -9,3 +9,4 @@ python rsgisbatchconvert2cog.py -i "/home/pete/Documents/gmw_v3_soil_total_carbo
 
 python rsgisbatchconvert2cog.py -i "/home/pete/Documents/gmw_v3_soil_total_carbon/data/202302_fnl_2020_rasters/kea/abv_grd_c/*.kea" \
 -o /home/pete/Documents/gmw_v3_soil_total_carbon/data/202302_fnl_2020_rasters/cog/abv_grd_c --chkimgs
+
