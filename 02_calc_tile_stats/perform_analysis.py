@@ -12,10 +12,10 @@ logger = logging.getLogger(__name__)
 def calc_stats(vals_img, gmw_img):
     img_vals_ds = gdal.Open(vals_img)
     if img_vals_ds is None:
-        raise Exception("Could not open the values input image: '{}'".format(uid_img))
+        raise Exception("Could not open the values input image: '{}'".format(vals_img))
     img_vals_band = img_vals_ds.GetRasterBand(1)
     if img_vals_band is None:
-        raise Exception("Failed to read the values image band: '{}'".format(uid_img))
+        raise Exception("Failed to read the values image band: '{}'".format(vals_img))
     vals_arr = img_vals_band.ReadAsArray()
     img_vals_ds = None
 
