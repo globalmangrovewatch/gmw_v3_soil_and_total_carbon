@@ -25,7 +25,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         for img in tqdm.tqdm(imgs):
             basename = rsgislib.tools.filetools.get_file_basename(img)
             tile_name = basename.split("_")[0]
-            out_img = os.path.join(kwargs["out_path"], f"{basename}_fill.tif")
+            out_img = os.path.join(kwargs["out_path"], f"{basename}_fill.kea")
 
             gmw_tile = os.path.join(kwargs["gmw_ext"], f"{tile_name}_gmw_union.kea")
             if not os.path.exists(gmw_tile):
@@ -53,7 +53,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
     def run_gen_commands(self):
 
         self.gen_command_info(
-            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles/*.tif",
+            img_tiles="/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles/*.kea",
             gmw_ext="/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/gmw_union_srtm_rasters",
             gmw_prj_lut="../00_base_info/gmw_srtm_tiles_luts.json",
             gmw_prj_stats="../03_calc_proj_stats/gmw_v3_proj_stats.json",
@@ -68,7 +68,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         self.create_shell_exe(
             run_script="run_exe_analysis.sh",
             cmds_sh_file="cmds_lst.sh",
-            n_cores=50,
+            n_cores=25,
             db_info_file="pbpt_db_conn_info.json",
         )
 
