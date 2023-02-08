@@ -46,7 +46,7 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
         self.create_shell_exe(
             run_script="run_exe_analysis.sh",
             cmds_sh_file="cmds_lst.sh",
-            n_cores=50,
+            n_cores=25,
             db_info_file="pbpt_db_conn_info.json",
             )
 
