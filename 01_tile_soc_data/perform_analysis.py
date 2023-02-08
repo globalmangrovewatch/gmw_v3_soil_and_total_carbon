@@ -19,12 +19,12 @@ class PerformAnalysis(PBPTQProcessTool):
             self.params["out_img"],
             gdalformat="KEA",
             interp_method=rsgislib.INTERP_CUBIC,
-            datatype=rsgislib.TYPE_16UINT,
+            datatype=rsgislib.TYPE_32INT,
             no_data_val=-32768,
             multicore=False,
         )
         rsgislib.imageutils.pop_img_stats(
-            self.params["out_img"], use_no_data=True, no_data_val=-32768, calc_pyramids=True
+            self.params["out_img"], use_no_data=True, no_data_val=0, calc_pyramids=True
         )
 
     def required_fields(self, **kwargs):
