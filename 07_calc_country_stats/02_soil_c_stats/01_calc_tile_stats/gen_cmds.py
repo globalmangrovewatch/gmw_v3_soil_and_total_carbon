@@ -35,12 +35,12 @@ class GenTaskCmds(PBPTGenQProcessToolCmds):
 
     def run_gen_commands(self):
 
-        self.gen_command_info(carbon_tiles='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/soc_0_100m_gmw_tiles_filled/*.tif',
+        self.gen_command_info(carbon_tiles='/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/soc_0_100m_gmw_tiles_filled/*.tif',
                               cntry_uid_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/countries/srtm_country_extents',
                               country_ids_lut_file='../../country_ids_lut.json',
                               pxl_area_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/srtm_pxl_areas',
                               gmw_ext_dir='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v3_extent/mng_mjr_2020',
-                              out_path='/home/pete/Documents/gmw_v3_soil_total_carbon/data/gmw_v2_soil_carbon_data/out_stats/total_soil_c/tile_stats')
+                              out_path='/home/pete/Documents/gmw_v3_soil_total_carbon/data/soc_20221216/out_stats/total_soil_c/tile_stats')
 
         self.pop_params_db()
         self.create_shell_exe(
