@@ -38,8 +38,8 @@ for cntry_id in country_ids_lut["val"].keys():
         out_data['3500-'].append(numpy.sum(country_c_arr[140:]) / tot_country_c)
 
 df_stats = pandas.DataFrame.from_dict(out_data)
-df_stats.to_csv("country_total_co2_hists_summary.csv")
-df_stats.to_feather("country_total_co2_hists_summary.feather")
-xlsx_writer = pandas.ExcelWriter("country_total_co2_hists_summary.xlsx", engine='xlsxwriter')
+df_stats.to_csv("country_abv_grd_c_hists_summary.csv")
+df_stats.to_feather("country_abv_grd_c_hists_summary.feather")
+xlsx_writer = pandas.ExcelWriter("country_abv_grd_c_hists_summary.xlsx", engine='xlsxwriter')
 df_stats.to_excel(xlsx_writer, sheet_name='tot_c_hist')
 xlsx_writer.close()
